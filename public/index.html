@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="NPSwiper for web mobile">
+  <title>NPSwiper</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      touch-action: manipulation;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+      touch-action: inherit;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    form,
+    fieldset,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+      padding: 0;
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    fieldset,
+    img {
+      border: 0;
+    }
+
+    address,
+    caption,
+    cite,
+    code,
+    dfn,
+    em,
+    th,
+    var {
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    button:focus,
+    textarea:focus,
+    input:focus,
+    select:focus,
+    a:focus,
+    a:active {
+      outline: none;
+    }
+
+    a,
+    a:focus,
+    a:hover {
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    input,
+    textarea,
+    button {
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #d2d2d2;
+    }
+
+    textarea::-webkit-input-placeholder {
+      color: #d2d2d2;
+    }
+
+    button {
+      user-select: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, Helvetica, Pingfang SC,
+        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, Arial, sans-serif, PingFangSC;
+      color: rgba(51, 51, 51, 1);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .content {
+      padding: 0 0 30px;
+      min-height: 100vh;
+    }
+
+    .text {
+      padding: 0 30px;
+    }
+
+    #swiper1,
+    #swiper3 {
+      margin-bottom: 30px;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+    <div class="content">
+      <div id="swiper1" class="nswiper-wrapper">
+        <div class="nswiper-container">
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/2ab21ec8-7882-4db5-b764-c6735ddc1dd1.png" alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/d1f71496-5391-412d-8386-5fcbaba276f6.jpg" alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/6342464e-71c1-497e-bebc-202910aa992c.jpg" alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/5af3a726-4d23-4cde-8364-4f1809b61f89.jpg" alt="slide">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="swiper3" class="nswiper-wrapper">
+        <div class="nswiper-container">
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/2ab21ec8-7882-4db5-b764-c6735ddc1dd1.png?imageView2/1/w/500/h/340"
+                alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/d1f71496-5391-412d-8386-5fcbaba276f6.jpg?imageView2/1/w/500/h/340"
+                alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/6342464e-71c1-497e-bebc-202910aa992c.jpg?imageView2/1/w/500/h/340"
+                alt="slide">
+            </div>
+          </div>
+          <div class="nswiper-slide">
+            <div class="slide">
+              <img src="https://wpimg.wallstcn.com/1160266e-368e-461a-bd63-92b8271d4d02.jpg?imageView2/1/w/500/h/340"
+                alt="slide">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text">
+        <div id="swiper4" class="nswiper-wrapper">
+          <div class="nswiper-container">
+            <div class="nswiper-slide">
+              <div class="slide">
+                <img src="https://wpimg.wallstcn.com/2ab21ec8-7882-4db5-b764-c6735ddc1dd1.png?imageView2/1/w/220/h/100"
+                  alt="slide">
+              </div>
+            </div>
+            <div class="nswiper-slide">
+              <div class="slide">
+                <img src="https://wpimg.wallstcn.com/d1f71496-5391-412d-8386-5fcbaba276f6.jpg?imageView2/1/w/220/h/100"
+                  alt="slide">
+              </div>
+            </div>
+            <div class="nswiper-slide">
+              <div class="slide">
+                <img src="https://wpimg.wallstcn.com/6342464e-71c1-497e-bebc-202910aa992c.jpg?imageView2/1/w/220/h/100"
+                  alt="slide">
+              </div>
+            </div>
+            <div class="nswiper-slide">
+              <div class="slide">
+                <img src="https://wpimg.wallstcn.com/5af3a726-4d23-4cde-8364-4f1809b61f89.jpg?imageView2/1/w/220/h/100"
+                  alt="slide">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+        new NSwiper('#swiper1', {
+          defaultIndex: 1,
+          onSlideChange: function (index) {
+            console.log(index)
+          }
+        })
+
+        new NSwiper('#swiper3', {
+          gutter: 10,
+          slideWidth: 250,
+          defaultOffset: -75,
+          autoplay: 3000
+        })
+        new NSwiper('#swiper4', {
+          defaultIndex: 1,
+          autoplay: 3000,
+        })
+      }
+    </script>
+</body>
+
+</html>

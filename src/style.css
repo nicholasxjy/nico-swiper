@@ -1,0 +1,14 @@
+.nswiper-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.nswiper-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.nswiper-slide {
+  flex: 1 0;
+}
