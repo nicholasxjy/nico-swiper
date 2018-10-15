@@ -46,7 +46,7 @@ class NSwiper {
       autoplay
     } = this.opts
     this.currentIndex = defaultIndex || 0
-    this.slides = this.container.querySelectorAll(slideClass) //domQuerySelectorAll(this.container, slideClass)
+    this.slides = this.container.querySelectorAll(slideClass)
     this.count = this.slides.length
     this.slideWidth = slideWidth || domWidth(this.container)
 
@@ -150,6 +150,12 @@ class NSwiper {
       transitionDuration: duration + 'ms',
       transform: `translate3d(${tempOffset}px, 0, 0)`
     })
+  }
+  goNext() {
+    this.move(1)
+  }
+  goPrev() {
+    this.move(-1)
   }
   destroy() {
     this.container.removeEventListener('touchstart', this.handleEventStart)

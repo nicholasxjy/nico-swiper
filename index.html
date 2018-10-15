@@ -136,6 +136,21 @@
       padding: 0 30px;
     }
 
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .actions button {
+      padding: 6px 12px;
+      margin: 0 10px 30px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #333;
+      border-radius: 2px;
+    }
+
     #swiper1,
     #swiper3 {
       margin-bottom: 30px;
@@ -146,6 +161,35 @@
       display: block;
     }
   </style>
+  <script>
+    window.onload = function () {
+      var swiper = new NSwiper('#swiper1', {
+        defaultIndex: 1,
+        onSlideChange: function (index) {
+          console.log(index)
+        }
+      })
+
+      document.getElementById('prev').addEventListener('click', function () {
+        swiper.goPrev()
+      })
+
+      document.getElementById('next').addEventListener('click', function () {
+        swiper.goNext()
+      })
+
+      new NSwiper('#swiper3', {
+        gutter: 10,
+        slideWidth: 250,
+        defaultOffset: -parseInt((window.innerWidth - 250 + 10) / 2),
+        autoplay: 3000
+      })
+      new NSwiper('#swiper4', {
+        defaultIndex: 1,
+        autoplay: 3000,
+      })
+    }
+  </script>
 </head>
 
 <body>
@@ -175,6 +219,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="actions">
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
       </div>
       <div id="swiper3" class="nswiper-wrapper">
         <div class="nswiper-container">
@@ -233,27 +281,6 @@
       </div>
     </div>
     <script type="text/javascript" src="./dist/NSwiper.min.js"></script>
-    <script>
-      window.onload = function () {
-        new NSwiper('#swiper1', {
-          defaultIndex: 1,
-          onSlideChange: function (index) {
-            console.log(index)
-          }
-        })
-
-        new NSwiper('#swiper3', {
-          gutter: 10,
-          slideWidth: 250,
-          defaultOffset: -75,
-          autoplay: 3000
-        })
-        new NSwiper('#swiper4', {
-          defaultIndex: 1,
-          autoplay: 3000,
-        })
-      }
-    </script>
 </body>
 
 </html>

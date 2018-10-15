@@ -46,7 +46,7 @@ $ npm install --save nico-swiper
 ```javascript
 import NSwiper from 'nico-swiper'
 // or <script src="NSwiper.min.js"></script>
-new NSwiper('#swiper', {
+const swiper = new NSwiper('#swiper', {
   gutter: 0, // slide gap
   slideWidth: 0, // custom slide width, if not set will be parent width
   defaultIndex: 0, // initial slide to show
@@ -57,6 +57,14 @@ new NSwiper('#swiper', {
   autoplay: 0 // must be a number, if set will swipe slide auto
   onSlideChange: function(index) {} // slide changed callback, index is the current slide index
 })
+
+// next slide
+swiper.goNext()
+// prev slide
+swiper.goPrev()
+
+// destroy
+swiper.destroy()
 ```
 
 ## FAQ
@@ -67,10 +75,14 @@ new NSwiper('#swiper', {
 
 - custom prev next ?
 
-  not support for now but will
+  use instance method goNext and goPrev, like swiper.goNext()
+
+- pc support
+
+  maybe
 
 - examples ?
 
   check it on [http://chef-salad.com/nico-swiper/](http://chef-salad.com/nico-swiper/)
 
-  and pictures used in demo are a singer called 9m88
+  and pictures used in demo from a singer called 9m88
