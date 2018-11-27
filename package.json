@@ -1,14 +1,13 @@
 {
   "name": "nico-swiper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A swiper for web mobile",
-  "main": "dist/nico-swiper.min.js",
+  "main": "dist/nico-swiper.cjs.js",
+  "module": "dist/nico-swiper.esm.js",
   "browser": "dist/nico-swiper.min.js",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "test": "node test/test.js",
-    "pretest": "npm run build"
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "swiper",

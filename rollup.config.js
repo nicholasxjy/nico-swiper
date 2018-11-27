@@ -26,5 +26,25 @@ export default [
       }),
       uglify()
     ]
+  },
+  {
+    input: 'src/index.js',
+    external: ['dom-helpers/query/width', 'dom-helpers/style'],
+    output: [
+      { file: pkg.main, format: 'cjs' },
+      { file: pkg.module, format: 'es' }
+    ],
+    plugins: [
+      resolve(),
+      commonjs(),
+      babel(),
+      postcss({
+        plugins: [
+          require('autoprefixer')({
+            browsers: ['>= 5%', 'last 2 versions', 'iOS >= 8', 'Safari >= 8']
+          })
+        ]
+      })
+    ]
   }
 ]
