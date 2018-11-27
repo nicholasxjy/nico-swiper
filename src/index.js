@@ -1,8 +1,6 @@
 import domWidth from 'dom-helpers/query/width'
 import domStyle from 'dom-helpers/style'
-
 import './style.css'
-
 const defaultOptions = {
   gutter: 0,
   slideWidth: 0,
