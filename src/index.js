@@ -109,24 +109,28 @@ class NSwiper {
     this.move(0, range(this.deltaX, [-this.slideWidth, this.slideWidth]))
   }
   handleEventEnd() {
-    const { autoplay } = this.opts
     if (this.deltaX) {
       const stepIndex = this.deltaX > 0 ? -1 : 1
       const step = Math.abs(this.deltaX) > 50 ? stepIndex : 0
       this.move(step)
     }
+  }
+  handleSlideChange() {
+    const { onSlideChange, autoplay } = this.opts
+    if (onSlideChange && typeof onSlideChange === 'function') {
+      onSlideChange(this.currentIndex)
+    }
+    // restore autoplay timer
     if (autoplay > 0 && this.timer) {
       this.setAutoPlay()
     }
   }
-  handleSlideChange() {
-    const { onSlideChange } = this.opts
-    if (onSlideChange && typeof onSlideChange === 'function') {
-      onSlideChange(this.currentIndex)
-    }
-  }
   move(step = 0, offset = 0) {
     const { gutter, defaultOffset, duration } = this.opts
+    // stop timer, when slide
+    if (this.timer) {
+      clearInterval(this.timer)
+    }
     if (step) {
       this.currentIndex = this.currentIndex + step
       if (this.currentIndex < 0) {

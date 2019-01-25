@@ -168,24 +168,25 @@ function () {
   };
 
   _proto.handleEventEnd = function handleEventEnd() {
-    var autoplay = this.opts.autoplay;
-
     if (this.deltaX) {
       var stepIndex = this.deltaX > 0 ? -1 : 1;
       var step = Math.abs(this.deltaX) > 50 ? stepIndex : 0;
       this.move(step);
     }
-
-    if (autoplay > 0 && this.timer) {
-      this.setAutoPlay();
-    }
   };
 
   _proto.handleSlideChange = function handleSlideChange() {
-    var onSlideChange = this.opts.onSlideChange;
+    var _this$opts3 = this.opts,
+        onSlideChange = _this$opts3.onSlideChange,
+        autoplay = _this$opts3.autoplay;
 
     if (onSlideChange && typeof onSlideChange === 'function') {
       onSlideChange(this.currentIndex);
+    } // restore autoplay timer
+
+
+    if (autoplay > 0 && this.timer) {
+      this.setAutoPlay();
     }
   };
 
@@ -198,10 +199,14 @@ function () {
       offset = 0;
     }
 
-    var _this$opts3 = this.opts,
-        gutter = _this$opts3.gutter,
-        defaultOffset = _this$opts3.defaultOffset,
-        duration = _this$opts3.duration;
+    var _this$opts4 = this.opts,
+        gutter = _this$opts4.gutter,
+        defaultOffset = _this$opts4.defaultOffset,
+        duration = _this$opts4.duration; // stop timer, when slide
+
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
 
     if (step) {
       this.currentIndex = this.currentIndex + step;

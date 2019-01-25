@@ -1,6 +1,6 @@
 {
   "name": "nico-swiper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A swiper for web mobile",
   "main": "dist/nico-swiper.cjs.js",
   "module": "dist/nico-swiper.esm.js",
