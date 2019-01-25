@@ -12,6 +12,7 @@ const defaultOptions = {
   autoplay: 0
 }
 
+const isTouchSupported = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch
 const isNode = el => el instanceof HTMLElement
 const range = (num, arr) => Math.min(Math.max(num, arr[0]), arr[1])
 
@@ -28,8 +29,9 @@ class NSwiper {
     this.opts = Object.assign({}, defaultOptions, opts)
     this.container = this.wrapper.querySelector(this.opts.containerClass)
     this.handleEventStart = this.handleEventStart.bind(this)
-    this.hanldeEventMove = this.hanldeEventMove.bind(this)
+    this.handleEventMove = this.handleEventMove.bind(this)
     this.handleEventEnd = this.handleEventEnd.bind(this)
+
     this.handleSlideChange = this.handleSlideChange.bind(this)
 
     this.init()
@@ -39,9 +41,7 @@ class NSwiper {
       slideClass,
       slideWidth,
       gutter,
-      duration,
       defaultIndex,
-      autoplay
     } = this.opts
     this.currentIndex = defaultIndex || 0
     this.slides = this.container.querySelectorAll(slideClass)
@@ -68,9 +68,11 @@ class NSwiper {
     this.setAutoPlay()
   }
   attachEvents() {
-    this.container.addEventListener('touchstart', this.handleEventStart)
-    this.container.addEventListener('touchmove', this.hanldeEventMove)
-    this.container.addEventListener('touchend', this.handleEventEnd)
+    if (isTouchSupported) {
+      this.container.addEventListener('touchstart', this.handleEventStart)
+      this.container.addEventListener('touchmove', this.handleEventMove)
+      this.container.addEventListener('touchend', this.handleEventEnd)
+    }
     this.container.addEventListener('transitionend', this.handleSlideChange)
   }
   setAutoPlay() {
@@ -102,7 +104,7 @@ class NSwiper {
     this.deltaX = 0
     this.startX = e.touches[0].clientX
   }
-  hanldeEventMove(e) {
+  handleEventMove(e) {
     this.deltaX = e.touches[0].clientX - this.startX
     this.move(0, range(this.deltaX, [-this.slideWidth, this.slideWidth]))
   }
@@ -156,9 +158,11 @@ class NSwiper {
     this.move(-1)
   }
   destroy() {
-    this.container.removeEventListener('touchstart', this.handleEventStart)
-    this.container.removeEventListener('touchmove', this.hanldeEventMove)
-    this.container.removeEventListener('touchend', this.handleEventEnd)
+    if (isTouchSupported) {
+      this.container.removeEventListener('touchstart', this.handleEventStart)
+      this.container.removeEventListener('touchmove', this.hanldeEventMove)
+      this.container.removeEventListener('touchend', this.handleEventEnd)
+    }
     this.container.removeEventListener('transitionend', this.handleSlideChange)
     if (this.timer) {
       clearInterval(this.timer)

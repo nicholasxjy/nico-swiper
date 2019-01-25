@@ -43,6 +43,7 @@ var defaultOptions = {
   duration: 300,
   autoplay: 0
 };
+var isTouchSupported = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 
 var isNode = function isNode(el) {
   return el instanceof HTMLElement;
@@ -69,7 +70,7 @@ function () {
     this.opts = Object.assign({}, defaultOptions, opts);
     this.container = this.wrapper.querySelector(this.opts.containerClass);
     this.handleEventStart = this.handleEventStart.bind(this);
-    this.hanldeEventMove = this.hanldeEventMove.bind(this);
+    this.handleEventMove = this.handleEventMove.bind(this);
     this.handleEventEnd = this.handleEventEnd.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
     this.init();
@@ -82,9 +83,7 @@ function () {
         slideClass = _this$opts.slideClass,
         slideWidth = _this$opts.slideWidth,
         gutter = _this$opts.gutter,
-        duration = _this$opts.duration,
-        defaultIndex = _this$opts.defaultIndex,
-        autoplay = _this$opts.autoplay;
+        defaultIndex = _this$opts.defaultIndex;
     this.currentIndex = defaultIndex || 0;
     this.slides = this.container.querySelectorAll(slideClass);
     this.count = this.slides.length;
@@ -112,9 +111,12 @@ function () {
   };
 
   _proto.attachEvents = function attachEvents() {
-    this.container.addEventListener('touchstart', this.handleEventStart);
-    this.container.addEventListener('touchmove', this.hanldeEventMove);
-    this.container.addEventListener('touchend', this.handleEventEnd);
+    if (isTouchSupported) {
+      this.container.addEventListener('touchstart', this.handleEventStart);
+      this.container.addEventListener('touchmove', this.handleEventMove);
+      this.container.addEventListener('touchend', this.handleEventEnd);
+    }
+
     this.container.addEventListener('transitionend', this.handleSlideChange);
   };
 
@@ -156,7 +158,7 @@ function () {
     this.startX = e.touches[0].clientX;
   };
 
-  _proto.hanldeEventMove = function hanldeEventMove(e) {
+  _proto.handleEventMove = function handleEventMove(e) {
     this.deltaX = e.touches[0].clientX - this.startX;
     this.move(0, range(this.deltaX, [-this.slideWidth, this.slideWidth]));
   };
@@ -232,9 +234,12 @@ function () {
   };
 
   _proto.destroy = function destroy() {
-    this.container.removeEventListener('touchstart', this.handleEventStart);
-    this.container.removeEventListener('touchmove', this.hanldeEventMove);
-    this.container.removeEventListener('touchend', this.handleEventEnd);
+    if (isTouchSupported) {
+      this.container.removeEventListener('touchstart', this.handleEventStart);
+      this.container.removeEventListener('touchmove', this.hanldeEventMove);
+      this.container.removeEventListener('touchend', this.handleEventEnd);
+    }
+
     this.container.removeEventListener('transitionend', this.handleSlideChange);
 
     if (this.timer) {

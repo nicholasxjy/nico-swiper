@@ -1,13 +1,14 @@
 {
   "name": "nico-swiper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A swiper for web mobile",
   "main": "dist/nico-swiper.cjs.js",
   "module": "dist/nico-swiper.esm.js",
   "browser": "dist/nico-swiper.min.js",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "demo": "http-server ./"
   },
   "keywords": [
     "swiper",
@@ -20,20 +21,23 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "autoprefixer": "^9.3.1",
-    "prettier": "^1.15.2",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.67.3",
-    "rollup-plugin-babel": "^4.0.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "autoprefixer": "^9.4.6",
+    "http-server": "^0.11.1",
+    "prettier": "^1.16.1",
+    "rimraf": "^2.6.3",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-postcss": "^1.6.3",
-    "rollup-plugin-uglify": "^6.0.0"
+    "rollup-plugin-uglify": "^6.0.1"
   },
   "dependencies": {
-    "dom-helpers": "^3.3.1"
+    "dom-helpers": "^3.4.0"
   },
-  "files": ["dist"]
+  "files": [
+    "dist"
+  ]
 }
